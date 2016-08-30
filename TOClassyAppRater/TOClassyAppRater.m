@@ -1,7 +1,7 @@
 //
 //  TOClassyAppRater.m
 //
-//  Copyright 2014 Timothy Oliver. All rights reserved.
+//  Copyright 2014-2016 Timothy Oliver. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to
@@ -39,7 +39,6 @@ NSString * const kAppRaterReviewURLiOS8 = @"itms-apps://itunes.apple.com/WebObje
 NSString * const TOClassyAppRaterDidUpdateNotification = @"TOClassyAppRaterDidUpdateNotification";
 
 #define APP_RATER_CHECK_INTERVAL 24*60*60 //24 hours
-#define USER_DEFAULTS [NSUserDefaults standardUserDefaults]
 
 /* App Store ID for this app. */
 static NSString *_appID;
@@ -58,59 +57,68 @@ static NSString *_localizedMessage = nil;
 {
     if (_appID == nil)
         [NSException raise:NSObjectNotAvailableException format:@"An app ID must be specified before calling this method."];
-    
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
     NSTimeInterval currentTime = [[NSDate date] timeIntervalSince1970];
-    NSTimeInterval previousUpdateTime = [USER_DEFAULTS floatForKey:kAppRaterSettingsLastUpdated];
+    NSTimeInterval previousUpdateTime = [defaults floatForKey:kAppRaterSettingsLastUpdated];
     
     if (currentTime < previousUpdateTime + APP_RATER_CHECK_INTERVAL)
         return;
-    
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        NSString *countryCode = [[NSLocale currentLocale] objectForKey: NSLocaleCountryCode];
-        NSString *searchURL = kAppRaterSearchAPIURL;
-        searchURL = [searchURL stringByReplacingOccurrencesOfString:@"{APPID}" withString:_appID];
-        searchURL = [searchURL stringByReplacingOccurrencesOfString:@"{COUNTRY}" withString:countryCode ? countryCode : @"US"];
-        
-        
-        NSData *jsonStream = [NSData dataWithContentsOfURL:[NSURL URLWithString:searchURL]];
-        if (jsonStream.length == 0) {
+
+    NSString *countryCode = [[NSLocale currentLocale] objectForKey: NSLocaleCountryCode];
+    NSString *searchURL = kAppRaterSearchAPIURL;
+    searchURL = [searchURL stringByReplacingOccurrencesOfString:@"{APPID}" withString:_appID];
+    searchURL = [searchURL stringByReplacingOccurrencesOfString:@"{COUNTRY}" withString:countryCode ? countryCode : @"US"];
+    NSURL *URL = [NSURL URLWithString:searchURL];
+
+    NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithURL:URL
+                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+    {
+        if (error || data.length == 0) {
 #ifdef DEBUG
-            NSLog(@"TOClassyAppRater: Unable to load JSON data from iTunes Search API.");
+            NSLog(@"TOClassyAppRater: Unable to load JSON data from iTunes Search API - %@", error.localizedDescription);
 #endif
             return;
         }
-        
-        NSError *error = nil;
-        NSDictionary *searchJSON = [NSJSONSerialization JSONObjectWithData:jsonStream options:NSJSONReadingMutableContainers error:&error];
+
+        error = nil;
+        NSDictionary *searchJSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (searchJSON == nil || error != nil) {
 #ifdef DEBUG
             NSLog(@"%@", error.localizedDescription);
 #endif
             return;
         }
-        
+
         NSInteger numberOfRatings = [[searchJSON[@"results"] firstObject][@"userRatingCountForCurrentVersion"] integerValue];
-        dispatch_async(dispatch_get_main_queue(), ^{
+
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             _localizedMessage = nil;
-            
-            [USER_DEFAULTS setInteger:numberOfRatings forKey:kAppRaterSettingsNumberOfRatings];
-            [USER_DEFAULTS setFloat:currentTime forKey:kAppRaterSettingsLastUpdated];
-            [USER_DEFAULTS synchronize];
-            
+
+            [defaults setInteger:numberOfRatings forKey:kAppRaterSettingsNumberOfRatings];
+            [defaults setFloat:currentTime forKey:kAppRaterSettingsLastUpdated];
+            [defaults synchronize];
+
             [[NSNotificationCenter defaultCenter] postNotificationName:TOClassyAppRaterDidUpdateNotification object:nil];
-        });
-    });
+        }];
+    }];
+
+    [dataTask resume];
 }
 
 + (NSString *)localizedUsersRatedString
 {
-    if ([USER_DEFAULTS objectForKey:kAppRaterSettingsNumberOfRatings] == nil)
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    if ([defaults objectForKey:kAppRaterSettingsNumberOfRatings] == nil)
         return nil;
     
-    if (_localizedMessage)
+    if (_localizedMessage) {
         return _localizedMessage;
+    }
     
-    NSInteger numberOfRatings = MAX([USER_DEFAULTS integerForKey:kAppRaterSettingsNumberOfRatings], 0);
+    NSInteger numberOfRatings = MAX([defaults integerForKey:kAppRaterSettingsNumberOfRatings], 0);
     
     NSString *ratedString = nil;
     if (numberOfRatings == 0)
