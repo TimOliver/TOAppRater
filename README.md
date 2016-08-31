@@ -1,6 +1,6 @@
 # TOClassyAppRater
 
-<img src="https://raw.github.com/TimOliver/TOClassyAppRater/master/Screenshots/TOClassyAppRaterScreenshot.jpg" alt="TOClassyAppRater" style="max-width:730px;" />
+<p align="center"><img src="https://raw.github.com/TimOliver/TOClassyAppRater/master/Screenshots/TOClassyAppRaterScreenshot.png" alt="TOClassyAppRater" width="380" style="margin:0 auto" /></p>
 
 I've been a huge fan of [Appirater](https://github.com/arashpayan/appirater) for many years, and it's netted many of my apps excellent reviews. But lately, I started agreeing with what [John Gruber wrote on requesting app reviews last year](http://daringfireball.net/linked/2013/12/05/eff-your-review) and more recently how [Marco Arment went about asking for reviews in his own app](http://www.marco.org/2014/12/05/how-overcast-asks-for-reviews). It's not cool to literally halt the app to pester users to rate it, and there really should be a better, more subtle way about doing it.
 
