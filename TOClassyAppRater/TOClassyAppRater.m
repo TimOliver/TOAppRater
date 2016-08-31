@@ -140,17 +140,17 @@ static NSString *_localizedMessage = nil;
 #if TARGET_IPHONE_SIMULATOR
     NSLog(@"TOClassyAppRater: Cannot open App Store on iOS Simulator");
     return;
-#endif
-    
+#else
     NSString *rateURL = [kAppRaterSearchAPIURL stringByReplacingOccurrencesOfString:@"{APPID}" withString:_appID];
     float systemVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
-    
+
     if (systemVersion >= 7.0 && systemVersion < 7.1)
         rateURL = [kAppRaterReviewURLiOS7 stringByReplacingOccurrencesOfString:@"{APPID}" withString:_appID];
     else if (systemVersion >= 8.0)
         rateURL = [kAppRaterReviewURLiOS8 stringByReplacingOccurrencesOfString:@"{APPID}" withString:_appID];
-    
+
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:rateURL]];
+#endif
 }
 
 @end
