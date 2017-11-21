@@ -22,6 +22,7 @@
 
 #import "TOClassyAppRater.h"
 #import <UIKit/UIKit.h>
+#import <StoreKit/StoreKit.h>
 
 NSString * const kAppRaterSettingsNumberOfRatings = @"TOAppRaterSettingsNumberOfRatings";
 NSString * const kAppRaterSettingsLastUpdated = @"TOAppRaterSettingsNumberLastUpdated";
@@ -55,9 +56,10 @@ static NSString *_localizedMessage = nil;
 
 + (void)checkForUpdates
 {
-    if (_appID == nil)
+    if (_appID == nil) {
         [NSException raise:NSObjectNotAvailableException format:@"An app ID must be specified before calling this method."];
-
+    }
+        
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
     NSTimeInterval currentTime = [[NSDate date] timeIntervalSince1970];
@@ -137,6 +139,12 @@ static NSString *_localizedMessage = nil;
 
 + (void)rateApp
 {
+    // From iOS 10.3 and onwards, this is the best way to 
+    if (NSClassFromString(@"SKStoreReviewController")) {
+        [SKStoreReviewController requestReview];
+        return;
+    }
+    
 #if TARGET_IPHONE_SIMULATOR
     NSLog(@"TOClassyAppRater: Cannot open App Store on iOS Simulator");
     return;
