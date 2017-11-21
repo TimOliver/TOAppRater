@@ -140,7 +140,7 @@ static NSString *_localizedMessage = nil;
 + (void)rateApp
 {
     // From iOS 10.3 and onwards, this is the best way to 
-    if (NSClassFromString(@"SKStoreReviewController")) {
+    if (@available(iOS 10.3, *)) {
         [SKStoreReviewController requestReview];
         return;
     }
