@@ -1,7 +1,7 @@
 //
 //  TOClassyAppRater.m
 //
-//  Copyright 2014-2016 Timothy Oliver. All rights reserved.
+//  Copyright 2014-2020 Timothy Oliver. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to
@@ -35,7 +35,8 @@ NSString * const kAppRaterSearchAPIURL = @"https://itunes.apple.com/lookup?id={A
 
 NSString * const kAppRaterReviewURL     = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id={APPID}";
 NSString * const kAppRaterReviewURLiOS7 = @"itms-apps://itunes.apple.com/app/id{APPID}";
-NSString * const kAppRaterReviewURLiOS8 = @"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id={APPID}&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software";
+NSString * const kAppRaterReviewURLiOS8 = @"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?\
+                                                id={APPID}&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software";
 
 NSString * const TOClassyAppRaterDidUpdateNotification = @"TOClassyAppRaterDidUpdateNotification";
 
@@ -139,12 +140,6 @@ static NSString *_localizedMessage = nil;
 
 + (void)rateApp
 {
-    // From iOS 10.3 and onwards, this is the best way to 
-    if (@available(iOS 10.3, *)) {
-        [SKStoreReviewController requestReview];
-        return;
-    }
-    
 #if TARGET_IPHONE_SIMULATOR
     NSLog(@"TOClassyAppRater: Cannot open App Store on iOS Simulator");
     return;
@@ -159,6 +154,16 @@ static NSString *_localizedMessage = nil;
 
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:rateURL]];
 #endif
+}
+
++ (void)promptForRating
+{
+    // From iOS 10.3 and onwards, this is the best way to prompt users
+    // for an in-app rating, as the system itself will determine when it
+    // is appropriate to show or not.
+    if (@available(iOS 10.3, *)) {
+        [SKStoreReviewController requestReview];
+    }
 }
 
 @end

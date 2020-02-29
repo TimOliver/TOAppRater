@@ -1,7 +1,7 @@
 //
 //  TOClassyAppRater.h
 //
-//  Copyright 2014-2016 Timothy Oliver. All rights reserved.
+//  Copyright 2014-2020 Timothy Oliver. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to
@@ -22,9 +22,17 @@
 
 #import <Foundation/Foundation.h>
 
-/* Notification that is posted whenever the ratings number is updated. */
+/**
+ A notification that is posted whenever the ratings number is updated.
+ Use this notification to update any UI currently displaying the users rating string.
+ */
 extern NSString * const TOClassyAppRaterDidUpdateNotification;
 
+/**
+ A class that tries to encourage users to rate the
+ app in a more "classy" way than disrupting their
+ experience with a poorly timed, obnoxious modal popup.
+ */
 @interface TOClassyAppRater : NSObject
 
 /**
@@ -52,5 +60,18 @@ extern NSString * const TOClassyAppRaterDidUpdateNotification;
  Moves the user over to the 'Reviews' section of the specified app on the App Store.
  */
 + (void)rateApp;
+
+/**
+ On iOS 10.3 and above, use the official system prompt to ask for a review.
+ 
+ The system controls the frequency that the prompt is displayed, and may not
+ even show it at all depending on the users preferences. As such, it should not
+ be used in response to a button tap, and can be called multiple times without
+ any detriments.
+ 
+ It is highly recommended to call this prompt at times where the user would not
+ feel inconvenienced by its appearence (eg, they just completed a task with the app etc)
+ */
++ (void)promptForRating;
 
 @end
