@@ -7,42 +7,25 @@
 //
 
 #import "AppDelegate.h"
-#import "TOClassyAppRater.h"
-
-@interface AppDelegate ()
-
-@end
+#import "TOAppRater.h"
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [TOClassyAppRater setAppID:@"493845493"];
-    [TOClassyAppRater checkForUpdates];
+    
+    // Upon app launch, configure the app rater with this app's own App Store ID.
+    [TOAppRater setAppID:@"493845493"];
+    
+    // Perform arequest to get the initial number of app reviews this app has.
+    [TOAppRater checkForUpdates];
+    
     return YES;
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-}
-
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-}
-
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    [TOClassyAppRater checkForUpdates];
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    // When returning from being suspended, attempt to perform another request to see
+    // if the number of reviews has since been updated.
+    [TOAppRater checkForUpdates];
 }
 
 @end

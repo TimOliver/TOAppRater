@@ -7,7 +7,7 @@
 //
 
 #import "TOTableViewController.h"
-#import "TOClassyAppRater.h"
+#import "TOAppRater.h"
 
 @interface TOTableViewController ()
 
@@ -17,10 +17,15 @@
 
 @implementation TOTableViewController
 
+#pragma mark - Register for Notifications -
+
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUpdateRatings) name:TOClassyAppRaterDidUpdateNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(didUpdateRatings)
+                                                     name:TOAppRaterDidUpdateNotification
+                                                   object:nil];
     }
 
     return self;
@@ -28,7 +33,9 @@
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:TOClassyAppRaterDidUpdateNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:TOAppRaterDidUpdateNotification
+                                                  object:nil];
 }
 
 - (void)didUpdateRatings
@@ -36,23 +43,16 @@
     [self.tableView reloadData];
 }
 
-#pragma mark - Table view data source
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
-}
-
+#pragma mark - Table View Presentation -
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TableCell" forIndexPath:indexPath];
     
-    cell.textLabel.text = @"Rate this app";
+    cell.textLabel.text = @"Rate This App";
     
-    if ([TOClassyAppRater localizedUsersRatedString])
-        cell.detailTextLabel.text = [TOClassyAppRater localizedUsersRatedString];
+    if ([TOAppRater localizedUsersRatedString]) {
+        cell.detailTextLabel.text = [TOAppRater localizedUsersRatedString];
+    }
     
     return cell;
 }
@@ -60,7 +60,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [TOClassyAppRater rateApp];
+    [TOAppRater rateApp];
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section { return 1; }
 
 @end

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		220B37D51A3F1C8D00D567A6 /* AppRaterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2236046A1A3F127B00CE33E7 /* AppRaterLocalizable.strings */; };
+		220B37D51A3F1C8D00D567A6 /* TOAppRaterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2236046A1A3F127B00CE33E7 /* TOAppRaterLocalizable.strings */; };
 		227A7925240A46F500D9DE4A /* TOAppRater.m in Sources */ = {isa = PBXBuildFile; fileRef = 227A7923240A46F500D9DE4A /* TOAppRater.m */; };
 		227A7945240A471900D9DE4A /* TOTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 227A793B240A471900D9DE4A /* TOTableViewController.m */; };
 		227A7946240A471900D9DE4A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 227A793C240A471900D9DE4A /* LaunchScreen.xib */; };
@@ -15,15 +15,14 @@
 		227A7948240A471900D9DE4A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 227A7940240A471900D9DE4A /* main.m */; };
 		227A7949240A471900D9DE4A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 227A7942240A471900D9DE4A /* Images.xcassets */; };
 		227A794A240A471900D9DE4A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 227A7943240A471900D9DE4A /* AppDelegate.m */; };
-		227A794B240A471900D9DE4A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 227A7944240A471900D9DE4A /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		220B38071A3F1D4F00D567A6 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/AppRaterLocalizable.strings; sourceTree = "<group>"; };
-		220B38081A3F1D5300D567A6 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/AppRaterLocalizable.strings; sourceTree = "<group>"; };
-		220B38091A3F1D5B00D567A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppRaterLocalizable.strings; sourceTree = "<group>"; };
-		220B380A1A3F1D6100D567A6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/AppRaterLocalizable.strings; sourceTree = "<group>"; };
-		2236046D1A3F127B00CE33E7 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AppRaterLocalizable.strings; sourceTree = "<group>"; };
+		220B38071A3F1D4F00D567A6 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/TOAppRaterLocalizable.strings; sourceTree = "<group>"; };
+		220B38081A3F1D5300D567A6 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/TOAppRaterLocalizable.strings; sourceTree = "<group>"; };
+		220B38091A3F1D5B00D567A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TOAppRaterLocalizable.strings; sourceTree = "<group>"; };
+		220B380A1A3F1D6100D567A6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/TOAppRaterLocalizable.strings; sourceTree = "<group>"; };
+		2236046D1A3F127B00CE33E7 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/TOAppRaterLocalizable.strings; sourceTree = "<group>"; };
 		225817681A3B4329008BF565 /* TOAppRaterExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TOAppRaterExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		227A7923240A46F500D9DE4A /* TOAppRater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOAppRater.m; sourceTree = "<group>"; };
 		227A7924240A46F500D9DE4A /* TOAppRater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOAppRater.h; sourceTree = "<group>"; };
@@ -36,9 +35,9 @@
 		227A7942240A471900D9DE4A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		227A7943240A471900D9DE4A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		227A7944240A471900D9DE4A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
-		22A223711A40602B002A394F /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/AppRaterLocalizable.strings; sourceTree = "<group>"; };
-		22A223721A406035002A394F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AppRaterLocalizable.strings"; sourceTree = "<group>"; };
-		22A223731A406039002A394F /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/AppRaterLocalizable.strings"; sourceTree = "<group>"; };
+		22A223711A40602B002A394F /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/TOAppRaterLocalizable.strings; sourceTree = "<group>"; };
+		22A223721A406035002A394F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TOAppRaterLocalizable.strings"; sourceTree = "<group>"; };
+		22A223731A406039002A394F /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/TOAppRaterLocalizable.strings"; sourceTree = "<group>"; };
 		22B731B11FC42B400060B5AD /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -58,7 +57,7 @@
 			children = (
 				227A7924240A46F500D9DE4A /* TOAppRater.h */,
 				227A7923240A46F500D9DE4A /* TOAppRater.m */,
-				2236046A1A3F127B00CE33E7 /* AppRaterLocalizable.strings */,
+				2236046A1A3F127B00CE33E7 /* TOAppRaterLocalizable.strings */,
 			);
 			path = TOAppRater;
 			sourceTree = "<group>";
@@ -84,13 +83,13 @@
 		227A7939240A471900D9DE4A /* TOAppRaterExample */ = {
 			isa = PBXGroup;
 			children = (
-				227A794C240A47A900D9DE4A /* Supporting FIles */,
 				227A793A240A471900D9DE4A /* AppDelegate.h */,
 				227A7943240A471900D9DE4A /* AppDelegate.m */,
 				227A7941240A471900D9DE4A /* TOTableViewController.h */,
 				227A793B240A471900D9DE4A /* TOTableViewController.m */,
 				227A793C240A471900D9DE4A /* LaunchScreen.xib */,
 				227A793E240A471900D9DE4A /* Main.storyboard */,
+				227A794C240A47A900D9DE4A /* Supporting FIles */,
 			);
 			path = TOAppRaterExample;
 			sourceTree = SOURCE_ROOT;
@@ -205,8 +204,7 @@
 				227A7947240A471900D9DE4A /* Main.storyboard in Resources */,
 				227A7949240A471900D9DE4A /* Images.xcassets in Resources */,
 				227A7946240A471900D9DE4A /* LaunchScreen.xib in Resources */,
-				227A794B240A471900D9DE4A /* Info.plist in Resources */,
-				220B37D51A3F1C8D00D567A6 /* AppRaterLocalizable.strings in Resources */,
+				220B37D51A3F1C8D00D567A6 /* TOAppRaterLocalizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,7 +225,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		2236046A1A3F127B00CE33E7 /* AppRaterLocalizable.strings */ = {
+		2236046A1A3F127B00CE33E7 /* TOAppRaterLocalizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				2236046D1A3F127B00CE33E7 /* fr */,
@@ -239,7 +237,7 @@
 				22A223721A406035002A394F /* zh-Hans */,
 				22A223731A406039002A394F /* zh-Hant */,
 			);
-			name = AppRaterLocalizable.strings;
+			name = TOAppRaterLocalizable.strings;
 			sourceTree = "<group>";
 		};
 		227A793C240A471900D9DE4A /* LaunchScreen.xib */ = {
@@ -308,7 +306,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -355,7 +353,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -368,7 +366,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6LF3GMKZAB;
 				INFOPLIST_FILE = "$(SRCROOT)/TOAppRaterExample/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.timoliver.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = TOAppRaterExample;
@@ -382,7 +380,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6LF3GMKZAB;
 				INFOPLIST_FILE = "$(SRCROOT)/TOAppRaterExample/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.timoliver.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = TOAppRaterExample;
