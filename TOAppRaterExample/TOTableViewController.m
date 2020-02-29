@@ -63,17 +63,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TableCell" forIndexPath:indexPath];
+    cell.textLabel.text = @"Rate This App on The App Store";
     
-    if (indexPath.row == 1) {
-        cell.textLabel.text = @"Rate This App on The App Store";
-        
-        NSString *localizedMessage = [TOAppRater localizedUsersRatedString];
-        if (localizedMessage) { cell.detailTextLabel.text = localizedMessage; }
-    }
-    else {
-        cell.textLabel.text = @"Show the In-App Review Prompt";
-        cell.detailTextLabel.text = nil;
-    }
+    NSString *localizedMessage = [TOAppRater localizedUsersRatedString];
+    if (localizedMessage) { cell.detailTextLabel.text = localizedMessage; }
         
     return cell;
 }
@@ -81,15 +74,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    if (indexPath.row == 1) {
-        [TOAppRater rateApp];
-    }
-    else {
-        [TOAppRater promptForRating];
-    }
+    [TOAppRater rateApp];
     
 }
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section { return 2; }
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section { return 1; }
+
+#pragma mark - Button Tapped -
+
+- (IBAction)promptButtonTapped:(id)sender
+{
+    [TOAppRater promptForRating];
+}
 
 @end

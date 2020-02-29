@@ -61,7 +61,13 @@
                             <outlet property="delegate" destination="lAk-Ig-hMo" id="QF9-xQ-CKp"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="App Rater" largeTitleDisplayMode="always" id="PI0-4C-Ep7"/>
+                    <navigationItem key="navigationItem" title="App Rater" largeTitleDisplayMode="always" id="PI0-4C-Ep7">
+                        <barButtonItem key="rightBarButtonItem" title="Prompt" id="hSb-9y-1Zr">
+                            <connections>
+                                <action selector="promptButtonTapped:" destination="lAk-Ig-hMo" id="HDZ-IO-JQw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Za4-rH-zg7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
