@@ -40,7 +40,23 @@
 
 - (void)didUpdateRatings
 {
-    [self.tableView reloadData];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+#pragma mark - View Set-up -
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    // On iPad, make the large title match the inset of the table
+    self.navigationController.navigationBar.layoutMargins = self.tableView.layoutMargins;
+    
+    // Position the table a little lower than the navigation bar
+    UIEdgeInsets insets = self.tableView.contentInset;
+    insets.top = 10.0f;
+    self.tableView.contentInset = insets;
 }
 
 #pragma mark - Table View Presentation -
@@ -48,21 +64,32 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TableCell" forIndexPath:indexPath];
     
-    cell.textLabel.text = @"Rate This App";
-    
-    if ([TOAppRater localizedUsersRatedString]) {
-        cell.detailTextLabel.text = [TOAppRater localizedUsersRatedString];
+    if (indexPath.row == 1) {
+        cell.textLabel.text = @"Rate This App on The App Store";
+        
+        NSString *localizedMessage = [TOAppRater localizedUsersRatedString];
+        if (localizedMessage) { cell.detailTextLabel.text = localizedMessage; }
     }
-    
+    else {
+        cell.textLabel.text = @"Show the In-App Review Prompt";
+        cell.detailTextLabel.text = nil;
+    }
+        
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [TOAppRater rateApp];
+    
+    if (indexPath.row == 1) {
+        [TOAppRater rateApp];
+    }
+    else {
+        [TOAppRater promptForRating];
+    }
+    
 }
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section { return 1; }
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section { return 2; }
 
 @end
