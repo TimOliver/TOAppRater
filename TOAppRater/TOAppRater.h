@@ -22,6 +22,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  A notification that is posted whenever the ratings number is updated.
  Use this notification to update any UI currently displaying the users rating string.
@@ -33,6 +35,7 @@ extern NSString * const TOAppRaterDidUpdateNotification;
  app in a more "classy" way than disrupting their
  experience with a poorly timed, obnoxious modal popup.
  */
+NS_SWIFT_NAME(AppRater)
 @interface TOAppRater : NSObject
 
 /**
@@ -54,7 +57,7 @@ extern NSString * const TOAppRaterDidUpdateNotification;
 /**
  Returns a localized string stating how many users have rated the current app.
  */
-+ (NSString *)localizedUsersRatedString;
++ (nullable NSString *)localizedUsersRatedString;
 
 /**
  Moves the user over to the 'Reviews' section of the specified app on the App Store.
@@ -75,3 +78,5 @@ extern NSString * const TOAppRaterDidUpdateNotification;
 + (void)promptForRating;
 
 @end
+
+NS_ASSUME_NONNULL_END

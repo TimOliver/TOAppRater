@@ -1,0 +1,4 @@
+"TOAppRater.NoRatingsYet"  = "Никто пока не оценил эту версию";
+"TOAppRater.OneRating" = "Только 1 человек оценил эту версию";
+"TOAppRater.LowRatingsCount" = "Только %d человек оценили эту версию";
+"TOAppRater.HighRatingsCount" =  "Кол-во людей, оценивших эту версию: %d";

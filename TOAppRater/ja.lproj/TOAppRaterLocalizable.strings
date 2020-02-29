@@ -1,0 +1,4 @@
+"TOAppRater.NoRatingsYet" = "このバージョンがまだだれにも評価されていません";
+"TOAppRater.OneRating" = "このバージョンがたった一人だけに評価されました";
+"TOAppRater.LowRatingsCount" = "このバージョンが%d人だけに評価されました";
+"TOAppRater.HighRatingsCount" = "このバージョンが%d人に評価されました";

@@ -1,0 +1,4 @@
+"TOAppRater.NoRatingsYet"  = "Personne n'a encore noté cette version de l'application";
+"TOAppRater.OneRating" = "Seulement une personne a noté cette version de l'application";
+"TOAppRater.LowRatingsCount" = "Seulement %d personnes ont noté cette version de l'application";
+"TOAppRater.HighRatingsCount" = "%d personnes ont noté cette version de l'application";

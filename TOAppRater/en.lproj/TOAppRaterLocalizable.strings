@@ -1,0 +1,4 @@
+"TOAppRater.NoRatingsYet"       = "No one has rated this version yet";
+"TOAppRater.OneRating"          = "Only 1 person has rated this version";
+"TOAppRater.LowRatingsCount"    = "Only %d people have rated this version";
+"TOAppRater.HighRatingsCount"   = "%d people have rated this version";
