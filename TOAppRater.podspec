@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'TOAppRater'
-  s.version  = '2.0'
+  s.version  = '2.0/0'
   s.license  =  { :type => 'MIT', :file => 'LICENSE' }
   s.summary  = 'A way to subtly remind users to rate your app.'
   s.homepage = 'https://github.com/TimOliver/TOAppRater'
