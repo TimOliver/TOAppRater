@@ -122,7 +122,7 @@ static NSString *_localizedMessage = nil; /* Cached copy of the localized messag
         // Print an error if the API call didn't succeed
         if (error || data.length == 0) {
             #ifdef DEBUG
-            NSLog(@"TOClassyAppRater: Unable to load JSON data from iTunes Search API - %@", error.localizedDescription);
+            NSLog(@"TOAppRater: Unable to load JSON data from iTunes Search API - %@", error.localizedDescription);
             #endif
             return;
         }
@@ -176,7 +176,7 @@ static NSString *_localizedMessage = nil; /* Cached copy of the localized messag
 + (void)rateApp
 {
 #if TARGET_IPHONE_SIMULATOR
-    NSLog(@"TOClassyAppRater: Cannot open App Store on iOS Simulator");
+    NSLog(@"TOAppRater: Cannot open App Store on iOS Simulator");
     return;
 #else
     NSString *rateURLString = [kAppRaterReviewURL stringByReplacingOccurrencesOfString:@"{APPID}" withString:_appID];
