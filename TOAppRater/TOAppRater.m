@@ -1,5 +1,5 @@
 //
-//  TOClassyAppRater.m
+//  TOAppRater.m
 //
 //  Copyright 2014-2020 Timothy Oliver. All rights reserved.
 //
@@ -20,7 +20,7 @@
 //  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
 //  IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#import "TOClassyAppRater.h"
+#import "TOAppRater.h"
 #import <UIKit/UIKit.h>
 #import <StoreKit/StoreKit.h>
 
@@ -38,7 +38,7 @@ NSString * const kAppRaterReviewURLiOS7 = @"itms-apps://itunes.apple.com/app/id{
 NSString * const kAppRaterReviewURLiOS8 = @"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?\
                                                 id={APPID}&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software";
 
-NSString * const TOClassyAppRaterDidUpdateNotification = @"TOClassyAppRaterDidUpdateNotification";
+NSString * const TOAppRaterDidUpdateNotification = @"TOAppRaterDidUpdateNotification";
 
 #define APP_RATER_CHECK_INTERVAL 24*60*60 //24 hours
 

@@ -41,6 +41,15 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "225817671A3B4329008BF565"
+            BuildableName = "TOClassyAppRaterExample.app"
+            BlueprintName = "TOClassyAppRaterExample"
+            ReferencedContainer = "container:TOClassyAppRaterExample.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -53,17 +62,6 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "225817671A3B4329008BF565"
-            BuildableName = "TOClassyAppRaterExample.app"
-            BlueprintName = "TOClassyAppRaterExample"
-            ReferencedContainer = "container:TOClassyAppRaterExample.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -80,13 +78,20 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "225817671A3B4329008BF565"
+            BuildableName = "TOAppRaterExample.app"
+            BlueprintName = "TOAppRaterExample"
+            ReferencedContainer = "container:TOAppRaterExample.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "225817671A3B4329008BF565"
             BuildableName = "TOClassyAppRaterExample.app"
             BlueprintName = "TOClassyAppRaterExample"
             ReferencedContainer = "container:TOClassyAppRaterExample.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
-      <AdditionalOptions>
-      </AdditionalOptions>
+      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

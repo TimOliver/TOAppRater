@@ -1,5 +1,5 @@
 //
-//  TOClassyAppRater.h
+//  TOAppRater.h
 //
 //  Copyright 2014-2020 Timothy Oliver. All rights reserved.
 //
@@ -26,14 +26,14 @@
  A notification that is posted whenever the ratings number is updated.
  Use this notification to update any UI currently displaying the users rating string.
  */
-extern NSString * const TOClassyAppRaterDidUpdateNotification;
+extern NSString * const TOAppRaterDidUpdateNotification;
 
 /**
  A class that tries to encourage users to rate the
  app in a more "classy" way than disrupting their
  experience with a poorly timed, obnoxious modal popup.
  */
-@interface TOClassyAppRater : NSObject
+@interface TOAppRater : NSObject
 
 /**
  Sets the App Store ID of this app that will be used for all furthur queries.
