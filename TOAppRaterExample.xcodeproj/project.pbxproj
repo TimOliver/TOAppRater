@@ -8,14 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		220B37D51A3F1C8D00D567A6 /* TOAppRaterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2236046A1A3F127B00CE33E7 /* TOAppRaterLocalizable.strings */; };
+		2249D7CC2425D874008BC04D /* TOAppRaterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2249D7CB2425D874008BC04D /* TOAppRaterTests.m */; };
+		2249D7D32425D908008BC04D /* TOAppRater.m in Sources */ = {isa = PBXBuildFile; fileRef = 227A7923240A46F500D9DE4A /* TOAppRater.m */; };
 		227A7925240A46F500D9DE4A /* TOAppRater.m in Sources */ = {isa = PBXBuildFile; fileRef = 227A7923240A46F500D9DE4A /* TOAppRater.m */; };
 		227A7945240A471900D9DE4A /* TOTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 227A793B240A471900D9DE4A /* TOTableViewController.m */; };
 		227A7946240A471900D9DE4A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 227A793C240A471900D9DE4A /* LaunchScreen.xib */; };
 		227A7947240A471900D9DE4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 227A793E240A471900D9DE4A /* Main.storyboard */; };
 		227A7948240A471900D9DE4A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 227A7940240A471900D9DE4A /* main.m */; };
 		227A7949240A471900D9DE4A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 227A7942240A471900D9DE4A /* Images.xcassets */; };
-		227A794A240A471900D9DE4A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 227A7943240A471900D9DE4A /* AppDelegate.m */; };
+		227A794A240A471900D9DE4A /* TOAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 227A7943240A471900D9DE4A /* TOAppDelegate.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2249D7CE2425D874008BC04D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 225817601A3B4329008BF565 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 225817671A3B4329008BF565;
+			remoteInfo = TOAppRaterExample;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		220B38071A3F1D4F00D567A6 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/TOAppRaterLocalizable.strings; sourceTree = "<group>"; };
@@ -23,17 +35,20 @@
 		220B38091A3F1D5B00D567A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TOAppRaterLocalizable.strings; sourceTree = "<group>"; };
 		220B380A1A3F1D6100D567A6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/TOAppRaterLocalizable.strings; sourceTree = "<group>"; };
 		2236046D1A3F127B00CE33E7 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/TOAppRaterLocalizable.strings; sourceTree = "<group>"; };
+		2249D7C92425D874008BC04D /* TOAppRaterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TOAppRaterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2249D7CB2425D874008BC04D /* TOAppRaterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TOAppRaterTests.m; sourceTree = "<group>"; };
+		2249D7CD2425D874008BC04D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		225817681A3B4329008BF565 /* TOAppRaterExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TOAppRaterExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		227A7923240A46F500D9DE4A /* TOAppRater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOAppRater.m; sourceTree = "<group>"; };
 		227A7924240A46F500D9DE4A /* TOAppRater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOAppRater.h; sourceTree = "<group>"; };
-		227A793A240A471900D9DE4A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		227A793A240A471900D9DE4A /* TOAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOAppDelegate.h; sourceTree = "<group>"; };
 		227A793B240A471900D9DE4A /* TOTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOTableViewController.m; sourceTree = "<group>"; };
 		227A793D240A471900D9DE4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		227A793F240A471900D9DE4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		227A7940240A471900D9DE4A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../main.m; sourceTree = "<group>"; };
 		227A7941240A471900D9DE4A /* TOTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOTableViewController.h; sourceTree = "<group>"; };
 		227A7942240A471900D9DE4A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		227A7943240A471900D9DE4A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		227A7943240A471900D9DE4A /* TOAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOAppDelegate.m; sourceTree = "<group>"; };
 		227A7944240A471900D9DE4A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		22A223711A40602B002A394F /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/TOAppRaterLocalizable.strings; sourceTree = "<group>"; };
 		22A223721A406035002A394F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TOAppRaterLocalizable.strings"; sourceTree = "<group>"; };
@@ -42,6 +57,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2249D7C62425D874008BC04D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		225817651A3B4329008BF565 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -62,11 +84,21 @@
 			path = TOAppRater;
 			sourceTree = "<group>";
 		};
+		2249D7CA2425D874008BC04D /* TOAppRaterTests */ = {
+			isa = PBXGroup;
+			children = (
+				2249D7CB2425D874008BC04D /* TOAppRaterTests.m */,
+				2249D7CD2425D874008BC04D /* Info.plist */,
+			);
+			path = TOAppRaterTests;
+			sourceTree = "<group>";
+		};
 		2258175F1A3B4329008BF565 = {
 			isa = PBXGroup;
 			children = (
 				223604691A3F127B00CE33E7 /* TOAppRater */,
 				227A7939240A471900D9DE4A /* TOAppRaterExample */,
+				2249D7CA2425D874008BC04D /* TOAppRaterTests */,
 				225817691A3B4329008BF565 /* Products */,
 				22B731B01FC42B400060B5AD /* Frameworks */,
 			);
@@ -76,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				225817681A3B4329008BF565 /* TOAppRaterExample.app */,
+				2249D7C92425D874008BC04D /* TOAppRaterTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,8 +116,8 @@
 		227A7939240A471900D9DE4A /* TOAppRaterExample */ = {
 			isa = PBXGroup;
 			children = (
-				227A793A240A471900D9DE4A /* AppDelegate.h */,
-				227A7943240A471900D9DE4A /* AppDelegate.m */,
+				227A793A240A471900D9DE4A /* TOAppDelegate.h */,
+				227A7943240A471900D9DE4A /* TOAppDelegate.m */,
 				227A7941240A471900D9DE4A /* TOTableViewController.h */,
 				227A793B240A471900D9DE4A /* TOTableViewController.m */,
 				227A793C240A471900D9DE4A /* LaunchScreen.xib */,
@@ -115,6 +148,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2249D7C82425D874008BC04D /* TOAppRaterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2249D7D02425D874008BC04D /* Build configuration list for PBXNativeTarget "TOAppRaterTests" */;
+			buildPhases = (
+				2249D7C52425D874008BC04D /* Sources */,
+				2249D7C62425D874008BC04D /* Frameworks */,
+				2249D7C72425D874008BC04D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2249D7CF2425D874008BC04D /* PBXTargetDependency */,
+			);
+			name = TOAppRaterTests;
+			productName = TOAppRaterTests;
+			productReference = 2249D7C92425D874008BC04D /* TOAppRaterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		225817671A3B4329008BF565 /* TOAppRaterExample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2258178B1A3B4329008BF565 /* Build configuration list for PBXNativeTarget "TOAppRaterExample" */;
@@ -141,6 +192,12 @@
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Tim Oliver";
 				TargetAttributes = {
+					2249D7C82425D874008BC04D = {
+						CreatedOnToolsVersion = 11.3.1;
+						DevelopmentTeam = 6LF3GMKZAB;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 225817671A3B4329008BF565;
+					};
 					225817671A3B4329008BF565 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = 6LF3GMKZAB;
@@ -192,11 +249,19 @@
 			projectRoot = "";
 			targets = (
 				225817671A3B4329008BF565 /* TOAppRaterExample */,
+				2249D7C82425D874008BC04D /* TOAppRaterTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2249D7C72425D874008BC04D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		225817661A3B4329008BF565 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -211,11 +276,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2249D7C52425D874008BC04D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2249D7CC2425D874008BC04D /* TOAppRaterTests.m in Sources */,
+				2249D7D32425D908008BC04D /* TOAppRater.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		225817641A3B4329008BF565 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				227A794A240A471900D9DE4A /* AppDelegate.m in Sources */,
+				227A794A240A471900D9DE4A /* TOAppDelegate.m in Sources */,
 				227A7945240A471900D9DE4A /* TOTableViewController.m in Sources */,
 				227A7948240A471900D9DE4A /* main.m in Sources */,
 				227A7925240A46F500D9DE4A /* TOAppRater.m in Sources */,
@@ -223,6 +297,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2249D7CF2425D874008BC04D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 225817671A3B4329008BF565 /* TOAppRaterExample */;
+			targetProxy = 2249D7CE2425D874008BC04D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2236046A1A3F127B00CE33E7 /* TOAppRaterLocalizable.strings */ = {
@@ -259,6 +341,63 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2249D7D12425D874008BC04D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 6LF3GMKZAB;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"TOAPPRATER_UNIT_TEST=1",
+				);
+				INFOPLIST_FILE = TOAppRaterTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.tim.TOAppRaterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TOAppRaterExample.app/TOAppRaterExample";
+			};
+			name = Debug;
+		};
+		2249D7D22425D874008BC04D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 6LF3GMKZAB;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = TOAppRaterTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.tim.TOAppRaterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TOAppRaterExample.app/TOAppRaterExample";
+			};
+			name = Release;
+		};
 		225817891A3B4329008BF565 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -368,7 +507,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/TOAppRaterExample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.timoliver.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = dev.tim.TOAppRaterExample;
 				PRODUCT_NAME = TOAppRaterExample;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -382,7 +521,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/TOAppRaterExample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.timoliver.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = dev.tim.TOAppRaterExample;
 				PRODUCT_NAME = TOAppRaterExample;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -391,6 +530,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2249D7D02425D874008BC04D /* Build configuration list for PBXNativeTarget "TOAppRaterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2249D7D12425D874008BC04D /* Debug */,
+				2249D7D22425D874008BC04D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		225817631A3B4329008BF565 /* Build configuration list for PBXProject "TOAppRaterExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

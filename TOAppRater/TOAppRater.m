@@ -29,7 +29,7 @@ NSString * const kAppRaterNumberOfRatingsSettingsKey = @"TOAppRater.NumberOfRati
 NSString * const kAppRaterLastUpdatedSettingsKey = @"TOAppRater.LastUpdatedDate";
 
 /** The amount of time between each query to the App Store to refresh the ratings count. */
-NSInteger const kAppRaterAppStoreQueryTimeInterval = 25*60*60;
+NSTimeInterval const kAppRaterAppStoreQueryTimeInterval = (24.0f * 60.0f * 60.0f);
 
 /** The App Store API call to retrieve the number of reviews. */
 NSString * const kAppRaterSearchAPIURL = @"https://itunes.apple.com/lookup?id={APPID}&country={COUNTRY}";
@@ -52,18 +52,20 @@ static NSString *_localizedMessage = nil; /* Cached copy of the localized messag
     _appID = appID;
 }
 
++ (NSString *)appID { return _appID; }
+
 + (BOOL)timeIntervalHasPassed
 {
     NSTimeInterval currentTime = [[NSDate date] timeIntervalSince1970];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSTimeInterval previousUpdateTime = [defaults floatForKey:kAppRaterLastUpdatedSettingsKey];
-    return (currentTime > previousUpdateTime + kAppRaterAppStoreQueryTimeInterval);
+    return (currentTime >= (previousUpdateTime + kAppRaterAppStoreQueryTimeInterval) - FLT_EPSILON);
 }
 
 + (NSURL *)searchAPIURL
 {
-    NSString *countryCode = [[NSLocale currentLocale] objectForKey: NSLocaleCountryCode];
+    NSString *countryCode = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
     NSString *searchURL = kAppRaterSearchAPIURL;
     searchURL = [searchURL stringByReplacingOccurrencesOfString:@"{APPID}" withString:_appID];
     searchURL = [searchURL stringByReplacingOccurrencesOfString:@"{COUNTRY}" withString:countryCode ? countryCode : @"US"];
@@ -79,15 +81,21 @@ static NSString *_localizedMessage = nil; /* Cached copy of the localized messag
                                                                     error:&error];
     if (searchResults == nil || error != nil) {
         #ifdef DEBUG
-        NSLog(@"%@", error.localizedDescription);
+        NSLog(@"TOAppRater: %@", error.localizedDescription);
         #endif
         return;
     }
 
-    // Extract the number of ratings
+    // Extract the number of ratings, or return out if the value wasn't found
     NSDictionary *results = [searchResults[@"results"] firstObject];
-    NSInteger numberOfRatings = [results[@"userRatingCountForCurrentVersion"] integerValue];
-
+    NSNumber *numberOfRatings = results[@"userRatingCountForCurrentVersion"];
+    if (numberOfRatings == nil) {
+        #ifdef DEBUG
+        NSLog(@"TOAppRater: Was unable to locate number of ratings in JSON payload. The response was malformed.");
+        #endif
+        return;
+    }
+    
     // Update the state on the main queue
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         // Clear the cached localized message, so a new one will be generated next time
@@ -96,7 +104,7 @@ static NSString *_localizedMessage = nil; /* Cached copy of the localized messag
         // Update user defaults
         NSTimeInterval currentTime = [[NSDate date] timeIntervalSince1970];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setInteger:numberOfRatings forKey:kAppRaterNumberOfRatingsSettingsKey];
+        [defaults setInteger:numberOfRatings.integerValue forKey:kAppRaterNumberOfRatingsSettingsKey];
         [defaults setFloat:currentTime forKey:kAppRaterLastUpdatedSettingsKey];
 
         // Broadcast that there was an update

@@ -40,7 +40,8 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      region = "US">
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
@@ -55,10 +56,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "225817801A3B4329008BF565"
-               BuildableName = "TOClassyAppRaterExampleTests.xctest"
-               BlueprintName = "TOClassyAppRaterExampleTests"
-               ReferencedContainer = "container:TOClassyAppRaterExample.xcodeproj">
+               BlueprintIdentifier = "2249D7C82425D874008BC04D"
+               BuildableName = "TOAppRaterTests.xctest"
+               BlueprintName = "TOAppRaterTests"
+               ReferencedContainer = "container:TOAppRaterExample.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
