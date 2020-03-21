@@ -5,6 +5,22 @@
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2249D7C82425D874008BC04D"
+               BuildableName = "TOAppRaterTests.xctest"
+               BlueprintName = "TOAppRaterTests"
+               ReferencedContainer = "container:TOAppRaterExample.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
    </BuildAction>
    <TestAction
       buildConfiguration = "Debug"
@@ -34,15 +50,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "225817671A3B4329008BF565"
-            BuildableName = "TOAppRaterExample.app"
-            BlueprintName = "TOAppRaterExample"
-            ReferencedContainer = "container:TOAppRaterExample.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <CommandLineArguments>
          <CommandLineArgument
             argument = "-AppleLocale en_US"
@@ -56,6 +63,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "2249D7C82425D874008BC04D"
+            BuildableName = "TOAppRaterTests.xctest"
+            BlueprintName = "TOAppRaterTests"
+            ReferencedContainer = "container:TOAppRaterExample.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
