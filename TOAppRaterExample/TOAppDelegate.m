@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Tim Oliver. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "TOAppDelegate.h"
 #import "TOAppRater.h"
 
-@implementation AppDelegate
+@implementation TOAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
