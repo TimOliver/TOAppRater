@@ -22,18 +22,19 @@
 // -----------------------------------------------------
 
 // User defaults key for storing when last chceked
-extern NSString * const kAppRaterLastUpdatedSettingsKey;
+extern NSString * const kTOAppRaterLastUpdatedSettingsKey;
 
 // User defaults key for number of reviews received
-extern NSString * const kAppRaterNumberOfRatingsSettingsKey;
+extern NSString * const kTOAppRaterNumberOfRatingsSettingsKey;
 
 // Private interface for methods not normally exposed publically
 @interface TOAppRater (UnitTest)
 
 + (NSString *)appID;
 + (NSURL *)searchAPIURL;
-+ (BOOL)timeIntervalHasPassed;
 + (void)updateRatingsCountWithAPIData:(NSData *)data;
++ (BOOL)timeIntervalHasPassedForKey:(NSString *)settingsKey
+                       timeInterval:(NSTimeInterval)timeInterval;
 
 @end
 
@@ -56,7 +57,7 @@ extern NSString * const kAppRaterNumberOfRatingsSettingsKey;
 
 - (void)tearDown
 {
-    [self.standardUserDefaults removeObjectForKey:kAppRaterLastUpdatedSettingsKey];
+    [self.standardUserDefaults removeObjectForKey:kTOAppRaterLastUpdatedSettingsKey];
 }
 
 - (void)testAppID
@@ -78,15 +79,17 @@ extern NSString * const kAppRaterNumberOfRatingsSettingsKey;
     NSTimeInterval oneDay = (24.0f * 60.0f * 60.0f);
     NSTimeInterval currentTime = [[NSDate date] timeIntervalSince1970];
     NSTimeInterval oneDayAgo = currentTime - (oneDay * 2.0f);
-    [self.standardUserDefaults setFloat:oneDayAgo forKey:kAppRaterLastUpdatedSettingsKey];
+    [self.standardUserDefaults setFloat:oneDayAgo forKey:kTOAppRaterLastUpdatedSettingsKey];
     
-    XCTAssertTrue([TOAppRater timeIntervalHasPassed]);
+    XCTAssertTrue([TOAppRater timeIntervalHasPassedForKey:kTOAppRaterLastUpdatedSettingsKey
+                                             timeInterval:oneDay]);
     
     // Set the time interval to within 24 hours
     NSTimeInterval halfDayAgo = currentTime - (oneDay * 0.5f);
-    [self.standardUserDefaults setFloat:halfDayAgo forKey:kAppRaterLastUpdatedSettingsKey];
+    [self.standardUserDefaults setFloat:halfDayAgo forKey:kTOAppRaterLastUpdatedSettingsKey];
     
-    XCTAssertFalse([TOAppRater timeIntervalHasPassed]);
+    XCTAssertFalse([TOAppRater timeIntervalHasPassedForKey:kTOAppRaterLastUpdatedSettingsKey
+                                              timeInterval:oneDay]);
 }
 
 - (void)testResponseJSONSuccess
@@ -101,7 +104,7 @@ extern NSString * const kAppRaterNumberOfRatingsSettingsKey;
     // This method asynchronously defers updating the defaults value to the main queue, so we can't
     // check the value in this loop. Perform the update, and then call the check in a subsequent operation.
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        NSInteger numberOfReviews = [self.standardUserDefaults integerForKey:kAppRaterNumberOfRatingsSettingsKey];
+        NSInteger numberOfReviews = [self.standardUserDefaults integerForKey:kTOAppRaterNumberOfRatingsSettingsKey];
         XCTAssertEqual(numberOfReviews, 999);
         [expectation fulfill];
     }];
@@ -112,7 +115,7 @@ extern NSString * const kAppRaterNumberOfRatingsSettingsKey;
 - (void)testResponseJSONFailure
 {
     // Set a default value we can test won't change
-    [self.standardUserDefaults setInteger:123 forKey:kAppRaterNumberOfRatingsSettingsKey];
+    [self.standardUserDefaults setInteger:123 forKey:kTOAppRaterNumberOfRatingsSettingsKey];
     
     NSString *responseJSON = @"{ \"results\": [] }";
     NSData *data = [responseJSON dataUsingEncoding:NSUTF8StringEncoding];
@@ -121,7 +124,7 @@ extern NSString * const kAppRaterNumberOfRatingsSettingsKey;
 
     [TOAppRater updateRatingsCountWithAPIData:data];
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        NSInteger numberOfReviews = [self.standardUserDefaults integerForKey:kAppRaterNumberOfRatingsSettingsKey];
+        NSInteger numberOfReviews = [self.standardUserDefaults integerForKey:kTOAppRaterNumberOfRatingsSettingsKey];
         XCTAssertEqual(numberOfReviews, 123);
         [expectation fulfill];
     }];
