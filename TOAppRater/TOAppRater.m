@@ -221,7 +221,9 @@ static NSString *_localizedMessage = nil; /* Cached copy of the localized messag
                                      timeInterval:kTOAppRaterReviewPromptTimeInterval] == NO) { return; }
 
     // Perform the review prompt
-    [SKStoreReviewController requestReview];
+    if (@available(iOS 10.3, *)) {
+        [SKStoreReviewController requestReview];
+    }
 
     // Save the current time so we can compare to that one next time.
     [[NSUserDefaults standardUserDefaults] setFloat:[[NSDate date] timeIntervalSince1970]
