@@ -25,17 +25,21 @@
 #import <StoreKit/StoreKit.h>
 
 /** The key values used to persist our latest state in user defaults. */
-NSString * const kAppRaterNumberOfRatingsSettingsKey = @"TOAppRater.NumberOfRatings";
-NSString * const kAppRaterLastUpdatedSettingsKey = @"TOAppRater.LastUpdatedDate";
+NSString * const kTOAppRaterNumberOfRatingsSettingsKey = @"TOAppRater.NumberOfRatings";
+NSString * const kTOAppRaterLastUpdatedSettingsKey     = @"TOAppRater.LastUpdatedDate";
+NSString * const kTOAppRaterLastPromptedSettingsKey    = @"TOAppRater.LastPromptedDate";
 
 /** The amount of time between each query to the App Store to refresh the ratings count. */
-NSTimeInterval const kAppRaterAppStoreQueryTimeInterval = (24.0f * 60.0f * 60.0f);
+NSTimeInterval const kTOAppRaterAppStoreQueryTimeInterval = (24.0f * 60.0f * 60.0f);
+
+/** The amount of time between each prompt to the user to submit an in-app review. */
+NSTimeInterval const kTOAppRaterReviewPromptTimeInterval = (24.0f * 60.0f * 60.0f);
 
 /** The App Store API call to retrieve the number of reviews. */
-NSString * const kAppRaterSearchAPIURL = @"https://itunes.apple.com/lookup?id={APPID}&country={COUNTRY}";
+NSString * const kTOAppRaterSearchAPIURL = @"https://itunes.apple.com/lookup?id={APPID}&country={COUNTRY}";
 
 /** The App Store app URL straight to an app's review page. */
-NSString * const kAppRaterReviewURL = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/"
+NSString * const kTOAppRaterReviewURL = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/"
                                             "viewContentsUserReviews?type=Purple+Software&id={APPID}";
 /** Thanks to Appirater for the appropriate App Store URL - https://github.com/arashpayan/appirater/issues/182 */
 
@@ -54,19 +58,18 @@ static NSString *_localizedMessage = nil; /* Cached copy of the localized messag
 
 + (NSString *)appID { return _appID; }
 
-+ (BOOL)timeIntervalHasPassed
++ (BOOL)timeIntervalHasPassedForKey:(NSString *)settingsKey timeInterval:(NSTimeInterval)timeInterval
 {
+    // Get the current time, and compare it to the stored time offset by the interval
     NSTimeInterval currentTime = [[NSDate date] timeIntervalSince1970];
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSTimeInterval previousUpdateTime = [defaults floatForKey:kAppRaterLastUpdatedSettingsKey];
-    return (currentTime >= (previousUpdateTime + kAppRaterAppStoreQueryTimeInterval) - FLT_EPSILON);
+    NSTimeInterval previousUpdateTime = [[NSUserDefaults standardUserDefaults] floatForKey:settingsKey];
+    return (currentTime >= (previousUpdateTime + timeInterval) - FLT_EPSILON);
 }
 
 + (NSURL *)searchAPIURL
 {
     NSString *countryCode = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
-    NSString *searchURL = kAppRaterSearchAPIURL;
+    NSString *searchURL = kTOAppRaterSearchAPIURL;
     searchURL = [searchURL stringByReplacingOccurrencesOfString:@"{APPID}" withString:_appID];
     searchURL = [searchURL stringByReplacingOccurrencesOfString:@"{COUNTRY}" withString:countryCode ? countryCode : @"US"];
     return [NSURL URLWithString:searchURL];
@@ -104,8 +107,8 @@ static NSString *_localizedMessage = nil; /* Cached copy of the localized messag
         // Update user defaults
         NSTimeInterval currentTime = [[NSDate date] timeIntervalSince1970];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setInteger:numberOfRatings.integerValue forKey:kAppRaterNumberOfRatingsSettingsKey];
-        [defaults setFloat:currentTime forKey:kAppRaterLastUpdatedSettingsKey];
+        [defaults setInteger:numberOfRatings.integerValue forKey:kTOAppRaterNumberOfRatingsSettingsKey];
+        [defaults setFloat:currentTime forKey:kTOAppRaterLastUpdatedSettingsKey];
 
         // Broadcast that there was an update
         [[NSNotificationCenter defaultCenter] postNotificationName:TOAppRaterDidUpdateNotification object:nil];
@@ -121,7 +124,8 @@ static NSString *_localizedMessage = nil; /* Cached copy of the localized messag
     }
     
     // Don't proceed if a sufficient amount of time hasn't passed yet.
-    if ([[self class] timeIntervalHasPassed] == NO) { return; }
+    if ([[self class] timeIntervalHasPassedForKey:kTOAppRaterLastUpdatedSettingsKey
+                                     timeInterval:kTOAppRaterAppStoreQueryTimeInterval] == NO) { return; }
 
     // Generate a URL with the appropriate parameters provided
     NSURL *url = [[self class] searchAPIURL];
@@ -148,7 +152,7 @@ static NSString *_localizedMessage = nil; /* Cached copy of the localized messag
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
     // If the initial request hasn't happened yet, simply return nil for now
-    NSNumber *numberOfRatingsObject = [defaults objectForKey:kAppRaterNumberOfRatingsSettingsKey];
+    NSNumber *numberOfRatingsObject = [defaults objectForKey:kTOAppRaterNumberOfRatingsSettingsKey];
     if (numberOfRatingsObject == nil) {
         return nil;
     }
@@ -187,7 +191,7 @@ static NSString *_localizedMessage = nil; /* Cached copy of the localized messag
     NSLog(@"TOAppRater: Cannot open App Store on iOS Simulator");
     return;
 #else
-    NSString *rateURLString = [kAppRaterReviewURL stringByReplacingOccurrencesOfString:@"{APPID}" withString:_appID];
+    NSString *rateURLString = [kTOAppRaterReviewURL stringByReplacingOccurrencesOfString:@"{APPID}" withString:_appID];
     NSURL *rateURL = [NSURL URLWithString:rateURLString];
     
     UIApplication *application = [UIApplication sharedApplication];
@@ -195,19 +199,35 @@ static NSString *_localizedMessage = nil; /* Cached copy of the localized messag
         [application openURL:rateURL options:@{} completionHandler:nil];
     }
     else {
+        #pragma GCC diagnostic push
+        #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
         [application openURL:rateURL];
+        #pragma GCC diagnostic pop
     }
 #endif
 }
 
 + (void)promptForRating
 {
-    // From iOS 10.3 and onwards, this is the best way to prompt users
-    // for an in-app rating, as the system itself will determine when it
-    // is appropriate to show or not.
-    if (@available(iOS 10.3, *)) {
-        [SKStoreReviewController requestReview];
-    }
+    // Only allow on iOS 10.3 and above
+    if (@available(iOS 10.3, *)) { }
+    else { return; }
+
+    // While this is the officially recommended way of asking for reviews by Apple,
+    // certain users have given 1-star reviews because it prompted too often.
+    // As such, we store the last time the prompt was attempted, and space it out
+    // over a much longer time period.
+
+    // Don't continue if we haven't passed the time frame yet
+    if ([[self class] timeIntervalHasPassedForKey:kTOAppRaterLastPromptedSettingsKey
+                                     timeInterval:kTOAppRaterReviewPromptTimeInterval] == NO) { return; }
+
+    // Perform the review prompt
+    [SKStoreReviewController requestReview];
+
+    // Save the current time so we can compare to that one next time.
+    [[NSUserDefaults standardUserDefaults] setFloat:[[NSDate date] timeIntervalSince1970]
+                                              forKey:kTOAppRaterLastPromptedSettingsKey];
 }
 
 + (NSBundle *)bundle
