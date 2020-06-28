@@ -39,9 +39,7 @@ NSTimeInterval const kTOAppRaterReviewPromptTimeInterval = (24.0f * 60.0f * 60.0
 NSString * const kTOAppRaterSearchAPIURL = @"https://itunes.apple.com/lookup?id={APPID}&country={COUNTRY}";
 
 /** The App Store app URL straight to an app's review page. */
-NSString * const kTOAppRaterReviewURL = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/"
-                                            "viewContentsUserReviews?type=Purple+Software&id={APPID}";
-/** Thanks to Appirater for the appropriate App Store URL - https://github.com/arashpayan/appirater/issues/182 */
+NSString * const kTOAppRaterReviewURL = @"https://itunes.apple.com/app/id{APPID}?action=write-review";
 
 /** The NSNotification that will be broadcast when the value has been updated. */
 NSString * const TOAppRaterDidUpdateNotification = @"TOAppRaterDidUpdateNotification";
