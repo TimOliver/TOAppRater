@@ -17,6 +17,22 @@
 
 @implementation TOTableViewController
 
+#pragma mark - Rate the app -
+
+- (void)rateApp
+{
+    /* Switch to the App Store app and open the Reviews section */
+    [TOAppRater rateApp];
+    
+    /*
+     Stay inside the app, and display a modal sheet of the App Store page
+    (Uncomment this line and comment the one above to test)
+     */
+//    [self presentViewController:[TOAppRater productViewController]
+//                       animated:YES
+//                     completion:nil];
+}
+
 #pragma mark - Register for Notifications -
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -74,8 +90,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [TOAppRater rateApp];
-    
+    [self rateApp];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section { return 1; }
 
