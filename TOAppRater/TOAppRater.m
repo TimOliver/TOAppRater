@@ -183,6 +183,14 @@ static NSString *_localizedMessage = nil; /* Cached copy of the localized messag
     return ratedString;
 }
 
++ (SKStoreProductViewController *)productViewController
+{
+    SKStoreProductViewController *controller = [[SKStoreProductViewController alloc] init];
+    [controller loadProductWithParameters:@{SKStoreProductParameterITunesItemIdentifier: @(_appID.integerValue)}
+                          completionBlock:nil];
+    return controller;
+}
+
 + (void)rateApp
 {
 #if TARGET_IPHONE_SIMULATOR
