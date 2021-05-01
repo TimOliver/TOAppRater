@@ -20,7 +20,8 @@
 //  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
 //  IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+@import Foundation;
+@import StoreKit;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -60,9 +61,16 @@ NS_SWIFT_NAME(AppRater)
 + (nullable NSString *)localizedUsersRatedString;
 
 /**
- Moves the user over to the 'Reviews' section of the specified app on the App Store.
+ Opens the App Store app on the device, and then displays the 'Reviews' section of the specified app.
  */
 + (void)rateApp;
+
+/**
+ Configures and returns a store product view controller that will display the app's page in the App Store,
+ allowing the user to rate the app without having to actually leave it.
+ This view controller *must* be presented modally, and will throw an exception otherwise.
+ */
++ (SKStoreProductViewController *)productViewController;
 
 /**
  On iOS 10.3 and above, use the official system prompt to ask for a review.
